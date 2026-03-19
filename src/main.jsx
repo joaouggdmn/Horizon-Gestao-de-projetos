@@ -33,14 +33,6 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <div>
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to="/company">Company</Link>
-        <Link to="/contact">Contact</Link>
-        <Link to="/new-project">New Project</Link>
-      </nav>
-    </div>
     <RouterProvider router={router} />
   </StrictMode>,
 );
