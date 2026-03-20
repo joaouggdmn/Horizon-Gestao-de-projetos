@@ -1,9 +1,9 @@
+import Logo from "./img/Horizon.png";
+
 function App() {
   return (
-    <div className="py-10 text-center">
-      <h1 className="font-['Open_Sans'] text-5xl font-medium tracking-tight text-blue-500 md:text-4xl">
-        COST
-      </h1>
+    <div className=" px-auto flex h-screen w-full items-center justify-center bg-linear-to-br">
+      <img src={Logo} alt="Logo" />
     </div>
   );
 }
