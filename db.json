@@ -1,29 +1,36 @@
 {
-    "projects":[],
-    "categories":[
-        {
-            "id": 1,
-            "name": "Infra"
-        },
-        {
-            "id": 2,
-            "name": "Agência"
-        },
-        {
-            "id": 3,
-            "name": "Desenvolvimento"
-        },
-        {
-            "id": 4,
-            "name": "Design"
-        },
-        {
-            "id": 5,
-            "name": "Marketing"
-        },
-        {
-            "id": 6,
-            "name": "Financeiro"
-        }
-    ]
+  "projects": [
+    {
+      "id": "17c7",
+      "cost": 0,
+      "services": []
+    }
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "name": "Infra"
+    },
+    {
+      "id": "2",
+      "name": "Agência"
+    },
+    {
+      "id": "3",
+      "name": "Desenvolvimento"
+    },
+    {
+      "id": "4",
+      "name": "Design"
+    },
+    {
+      "id": "5",
+      "name": "Marketing"
+    },
+    {
+      "id": "6",
+      "name": "Financeiro"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

@@ -1,6 +1,31 @@
 import ProjectForm from "../project/ProjectForm";
+import { useNavigate } from "react-router-dom";
 
 function NewProject() {
+  const navigate = useNavigate();
+
+  function createPost(project) {
+    // initialize cost and services
+    project.cost = 0;
+    project.services = [];
+
+    fetch("http://localhost:5000/projects", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(project),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Project created:", data);
+        navigate("/projects");
+      })
+      .catch((error) => {
+        console.error("Error creating project:", error);
+      });
+  }
+
   return (
     <div className="min-h-screen bg-linear-to-br from-slate-50 via-blue-50 to-slate-50 py-12 px-6">
       <div className="max-w-3xl mx-auto">
@@ -17,7 +42,7 @@ function NewProject() {
         </div>
 
         {/* Form Section */}
-        <ProjectForm/>
+        <ProjectForm onSubmit={createPost} />
       </div>
     </div>
   );

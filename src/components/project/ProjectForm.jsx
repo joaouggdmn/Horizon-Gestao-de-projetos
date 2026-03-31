@@ -4,8 +4,9 @@ import Button from "../form/Button";
 
 import { useEffect, useState } from "react";
 
-function ProjectForm() {
+function ProjectForm({ onSubmit, projectData }) {
   const [categories, setCategories] = useState([]);
+  const [project, setProject] = useState(projectData || {});
 
   useEffect(() => {
     fetch("http://localhost:5000/categories", {
@@ -19,8 +20,30 @@ function ProjectForm() {
       .catch((err) => console.log(err));
   }, []);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit(project);
+  };
+
+  function handleChange(e) {
+    setProject({ ...project, [e.target.name]: e.target.value });
+  }
+
+  function handleCategory(e) {
+    setProject({
+      ...project,
+      category: {
+        id: e.target.value,
+        name: e.target.options[e.target.selectedIndex].text,
+      },
+    });
+  }
+
   return (
-    <form className="max-w-3xl mx-auto bg-white rounded-2xl shadow-xl p-8 md:p-12 space-y-8">
+    <form
+      onSubmit={handleSubmit}
+      className="max-w-3xl mx-auto bg-white rounded-2xl shadow-xl p-8 md:p-12 space-y-8"
+    >
       {/* Form Header */}
       <div className="border-b border-slate-200 pb-6">
         <h2 className="text-3xl font-bold text-slate-900 mb-2">Novo Projeto</h2>
@@ -37,6 +60,8 @@ function ProjectForm() {
           text="Nome do Projeto"
           name="name"
           placeholder="Digite o nome do seu projeto"
+          handleOnChange={handleChange}
+          value={project.name ? project.name : '' }
         />
 
         {/* Budget */}
@@ -45,6 +70,8 @@ function ProjectForm() {
           text="Orçamento Total"
           name="budget"
           placeholder="0.00"
+          handleOnChange={handleChange}
+          value={project.budget ? project.budget : '' }
         />
 
         {/* Category */}
@@ -52,6 +79,8 @@ function ProjectForm() {
           text="Categoria do Projeto"
           name="category_id"
           options={categories}
+          handleOnChange={handleCategory}
+          value={project.category ? project.category.id : ''}
         />
       </div>
 
