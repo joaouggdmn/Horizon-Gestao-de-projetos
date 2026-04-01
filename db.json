@@ -4,6 +4,33 @@
       "id": "17c7",
       "cost": 0,
       "services": []
+    },
+    {
+      "id": "7ab1",
+      "name": "Contratar contador",
+      "budget": "10000",
+      "category": {
+        "id": "6",
+        "name": "Financeiro"
+      },
+      "cost": 0,
+      "services": []
+    },
+    {
+      "id": "127a",
+      "cost": 0,
+      "services": []
+    },
+    {
+      "id": "cd33",
+      "name": "asas",
+      "budget": "1212",
+      "category": {
+        "id": "4",
+        "name": "Design"
+      },
+      "cost": 0,
+      "services": []
     }
   ],
   "categories": [
