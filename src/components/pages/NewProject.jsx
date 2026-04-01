@@ -19,7 +19,8 @@ function NewProject() {
       .then((response) => response.json())
       .then((data) => {
         console.log("Project created:", data);
-        navigate("/projects");
+        // Redirect to the projects page after successful creation
+        navigate("/projects", { message: "Projeto criado com sucesso!" });
       })
       .catch((error) => {
         console.error("Error creating project:", error);
