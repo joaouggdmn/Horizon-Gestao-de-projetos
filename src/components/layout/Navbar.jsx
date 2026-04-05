@@ -9,7 +9,7 @@ function Navbar() {
         <div className="flex items-center justify-between px-4 sm:px-6 py-3">
           {/* Logo */}
           <Link
-            to="/"
+            to="/home"
             className="shrink-0 transform transition-all duration-300 hover:scale-110 hover:drop-shadow-lg active:scale-95"
           >
             <img
