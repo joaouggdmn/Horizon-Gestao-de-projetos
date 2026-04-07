@@ -1,5 +1,4 @@
 import { BsPencil, BsFillTrashFill } from "react-icons/bs";
-import LinkButton from "../layout/LinkButton";
 import { Link } from "react-router-dom";
 
 function ProjectCard({ id, name, budget, category, handleRemove }) {
@@ -9,10 +8,8 @@ function ProjectCard({ id, name, budget, category, handleRemove }) {
       Desenvolvimento: "bg-green-500",
       Design: "bg-purple-500",
       Marketing: "bg-orange-500",
-      Consultoria: "bg-red-500",
-      Suporte: "bg-yellow-500",
-      Testes: "bg-pink-500",
-      DevOps: "bg-cyan-500",
+      Agência: "bg-pink-500",
+      Financeiro: "bg-cyan-500"
     };
     return colors[categoryName] || "bg-slate-500";
   };
