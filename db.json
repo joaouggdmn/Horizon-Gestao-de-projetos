@@ -13,11 +13,11 @@
     },
     {
       "id": "4495",
-      "name": "teste agora vai",
-      "budget": "998",
+      "name": "teste normal apenas",
+      "budget": "1000",
       "category": {
-        "id": "3",
-        "name": "Desenvolvimento"
+        "id": "1",
+        "name": "Infraestrutura"
       },
       "cost": 0,
       "services": []
@@ -29,6 +29,17 @@
       "category": {
         "id": "3",
         "name": "Desenvolvimento"
+      },
+      "cost": 0,
+      "services": []
+    },
+    {
+      "id": "000d",
+      "name": "At testeee",
+      "budget": "30.000",
+      "category": {
+        "id": "2",
+        "name": "Agência"
       },
       "cost": 0,
       "services": []
