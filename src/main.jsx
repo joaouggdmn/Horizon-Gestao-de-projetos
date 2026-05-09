@@ -2,7 +2,12 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
-import { createBrowserRouter, RouterProvider, Outlet, Navigate } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Outlet,
+  Navigate,
+} from "react-router-dom";
 import Home from "./components/pages/Home.jsx";
 import Company from "./components/pages/Company.jsx";
 import Contact from "./components/pages/Contact.jsx";
@@ -38,7 +43,8 @@ const router = createBrowserRouter([
     path: "/",
     element: <Layout />,
     children: [
-      { index: true, path: "home", element: <Home /> },
+      { index: true, element: <Home /> },
+      { path: "home", element: <Home /> },
       { path: "projects", element: <Projects /> },
       { path: "company", element: <Company /> },
       { path: "contact", element: <Contact /> },
