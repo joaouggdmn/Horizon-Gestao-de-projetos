@@ -43,7 +43,7 @@ function NewProject() {
         </div>
 
         {/* Form Section */}
-        <ProjectForm onSubmit={createPost} />
+        <ProjectForm onSubmit={createPost} btnText="Criar Projeto" />
       </div>
     </div>
   );
