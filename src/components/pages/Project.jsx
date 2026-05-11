@@ -11,6 +11,7 @@ function Project() {
   const [showPf, setShowPf] = useState(false);
   const [message, setMessage] = useState();
   const [type, setType] = useState();
+  const [showSf, setShowSf] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
@@ -34,33 +35,37 @@ function Project() {
     // Lógica para mostrar/ocultar o formulário de edição do projeto
     setShowPf(!showPf);
   }
+  function toggleServiceForm() {
+    // Lógica para mostrar/ocultar o formulário de adição de serviço
+    setShowSf(!showSf);
+  }
 
-  function editPost(project){
-    setMessage(''); // Limpa mensagens anteriores
+  function editPost(project) {
+    setMessage(""); // Limpa mensagens anteriores
 
     // budget validation
-    if(project.budget < project.cost){
-        setMessage("O orçamento não pode ser menor que o custo do projeto!");
-        setType("error");
-        return false;
+    if (project.budget < project.cost) {
+      setMessage("O orçamento não pode ser menor que o custo do projeto!");
+      setType("error");
+      return false;
     }
 
     fetch(`http://localhost:5000/projects/${project.id}`, {
-        method: "PATCH",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(project),
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(project),
     })
-    .then((resp) => resp.json())
-    .then((data) => {
+      .then((resp) => resp.json())
+      .then((data) => {
         setProject(data);
         setShowPf(false);
 
         setMessage("Projeto atualizado com sucesso!");
         setType("success");
-    })
-    .catch((err) => console.error("Erro ao atualizar projeto:", err));
+      })
+      .catch((err) => console.error("Erro ao atualizar projeto:", err));
   }
 
   return (
@@ -124,6 +129,20 @@ function Project() {
                 </div>
               )}
             </div>
+            <div>
+              <h2>Adicione um serviço: </h2>
+              <button
+                onClick={toggleServiceForm}
+                className="inline-flex items-center justify-center px-6 py-3 bg-linear-to-r from-blue-500 to-cyan-500 text-white font-semibold rounded-lg hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 shadow hover:shadow-lg hover:scale-105"
+              >
+                {!showSf ? "Adicionar Serviço" : "Fechar"}
+              </button>
+              {showSf && <div>formulário</div>}
+            </div>
+            <h2>Serviços</h2>
+            <Container>
+              <p>Itens de Serviços</p>
+            </Container>
           </Container>
         </div>
       ) : (
