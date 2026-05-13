@@ -8,8 +8,45 @@
         "id": "6",
         "name": "Financeiro"
       },
-      "cost": 0,
-      "services": []
+      "cost": 10,
+      "services": [
+        {
+          "name": "teste",
+          "cost": "1000",
+          "description": "teste de serviço",
+          "id": "668c66d7-d54c-4048-99dc-685d0738104d"
+        },
+        {
+          "name": "teste",
+          "cost": "1000",
+          "description": "teste de serviço",
+          "id": "668c66d7-d54c-4048-99dc-685d0738104d"
+        },
+        {
+          "name": "teste",
+          "cost": "1000",
+          "description": "teste de serviço",
+          "id": "668c66d7-d54c-4048-99dc-685d0738104d"
+        },
+        {
+          "name": "teste",
+          "cost": "1000",
+          "description": "teste de serviço",
+          "id": "668c66d7-d54c-4048-99dc-685d0738104d"
+        },
+        {
+          "name": "teste",
+          "cost": "1000",
+          "description": "teste de serviço",
+          "id": "668c66d7-d54c-4048-99dc-685d0738104d"
+        },
+        {
+          "name": "teste",
+          "cost": "10",
+          "description": "teste de serviço",
+          "id": "9aa6acdf-812b-45f1-9320-a2825fc600ec"
+        }
+      ]
     },
     {
       "id": "4495",
