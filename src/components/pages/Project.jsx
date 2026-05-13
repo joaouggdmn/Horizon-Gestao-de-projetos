@@ -4,6 +4,9 @@ import Loading from "../layout/Loading";
 import Container from "../layout/Container";
 import ProjectForm from "../project/ProjectForm";
 import Message from "../layout/Message";
+import ServiceForm from "../service/ServiceForm";
+
+import { parse, v4 as uuidv4 } from "uuid";
 
 function Project() {
   const { id } = useParams();
@@ -31,15 +34,6 @@ function Project() {
     }, 2000);
   }, [id]);
 
-  function toggleProjectForm() {
-    // Lógica para mostrar/ocultar o formulário de edição do projeto
-    setShowPf(!showPf);
-  }
-  function toggleServiceForm() {
-    // Lógica para mostrar/ocultar o formulário de adição de serviço
-    setShowSf(!showSf);
-  }
-
   function editPost(project) {
     setMessage(""); // Limpa mensagens anteriores
 
@@ -66,6 +60,55 @@ function Project() {
         setType("success");
       })
       .catch((err) => console.error("Erro ao atualizar projeto:", err));
+  }
+
+  function toggleProjectForm() {
+    // Lógica para mostrar/ocultar o formulário de edição do projeto
+    setShowPf(!showPf);
+  }
+  function toggleServiceForm() {
+    // Lógica para mostrar/ocultar o formulário de adição de serviço
+    setShowSf(!showSf);
+  }
+
+  function createService() {
+    setMessage(""); // Limpa mensagens anteriores
+    //last service
+    const lastService = project.services[project.services.length - 1];
+    lastService.id = uuidv4();
+
+    const LastServiceCost = lastService.cost;
+    const newCost = parseFloat(project.cost) + parseFloat(LastServiceCost);
+    // maximum value validation
+    if (newCost > parseFloat(project.budget)) {
+      setMessage("Orçamento ultrapassado, verifique o valor do serviço!");
+      setType("error");
+      project.services.pop();
+      return false;
+    }
+
+    //add service cost to project total cost
+    project.cost = newCost;
+
+    // update project
+    fetch(`http://localhost:5000/projects/${project.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(project),
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        // exibir os serviços
+        setProject(data);
+        setShowSf(false);
+        setMessage("Serviço adicionado com sucesso!");
+        setType("success");
+      })
+      .catch((err) => {
+        console.error("Erro ao adicionar serviço:", err);
+      });
   }
 
   return (
@@ -137,7 +180,13 @@ function Project() {
               >
                 {!showSf ? "Adicionar Serviço" : "Fechar"}
               </button>
-              {showSf && <div>formulário</div>}
+              {showSf && (
+                <ServiceForm
+                  handleSubmit={createService}
+                  textBtn="Adicionar Serviço"
+                  projectData={project}
+                />
+              )}
             </div>
             <h2>Serviços</h2>
             <Container>

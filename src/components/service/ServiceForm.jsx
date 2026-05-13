@@ -1,10 +1,20 @@
 import SubmitButton from "../form/Button";
 import Input from "../form/Input";
+import { useState } from "react";
 
 function ServiceForm({ handleSubmit, textBtn, projectData}) {
-  function submit(e) {}
 
-  function handleChange(e) {}
+    const [service, setService] = useState({});
+
+  function submit(e) {
+    e.preventDefault();
+    projectData.services.push(service);
+    handleSubmit(projectData);
+  }
+
+  function handleChange(e) {
+    setService({ ...service, [e.target.name]: e.target.value });
+  }
 
   return (
     <form onSubmit={submit}>
