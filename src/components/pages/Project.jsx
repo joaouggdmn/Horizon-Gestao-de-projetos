@@ -6,7 +6,7 @@ import ProjectForm from "../project/ProjectForm";
 import Message from "../layout/Message";
 import ServiceForm from "../service/ServiceForm";
 
-import { parse, v4 as uuidv4 } from "uuid";
+import { v4 as uuidv4 } from "uuid";
 
 function Project() {
   const { id } = useParams();
@@ -172,14 +172,26 @@ function Project() {
                 </div>
               )}
             </div>
-            <div>
-              <h2>Adicione um serviço: </h2>
-              <button
-                onClick={toggleServiceForm}
-                className="inline-flex items-center justify-center px-6 py-3 bg-linear-to-r from-blue-500 to-cyan-500 text-white font-semibold rounded-lg hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 shadow hover:shadow-lg hover:scale-105"
-              >
-                {!showSf ? "Adicionar Serviço" : "Fechar"}
-              </button>
+            <div className="mt-8 rounded-2xl border border-slate-200 bg-slate-50 p-6 shadow">
+              <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                    Serviços
+                  </p>
+                  <h2 className="text-2xl font-bold text-slate-900">
+                    Adicione um serviço
+                  </h2>
+                  <p className="text-sm text-slate-500">
+                    Cadastre novos serviços para atualizar o custo do projeto.
+                  </p>
+                </div>
+                <button
+                  onClick={toggleServiceForm}
+                  className="inline-flex items-center justify-center px-6 py-3 bg-linear-to-r from-blue-500 to-cyan-500 text-white font-semibold rounded-lg hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 shadow hover:shadow-lg"
+                >
+                  {!showSf ? "Adicionar Serviço" : "Fechar"}
+                </button>
+              </div>
               {showSf && (
                 <ServiceForm
                   handleSubmit={createService}
