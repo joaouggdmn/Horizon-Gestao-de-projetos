@@ -5,12 +5,14 @@ import Container from "../layout/Container";
 import ProjectForm from "../project/ProjectForm";
 import Message from "../layout/Message";
 import ServiceForm from "../service/ServiceForm";
+import ServiceCard from "../service/ServiceCard";
 
 import { v4 as uuidv4 } from "uuid";
 
 function Project() {
   const { id } = useParams();
-  const [project, setProject] = useState([]);
+  const [project, setProject] = useState({});
+  const [services, setServices] = useState([]);
   const [showPf, setShowPf] = useState(false);
   const [message, setMessage] = useState();
   const [type, setType] = useState();
@@ -27,6 +29,7 @@ function Project() {
         .then((resp) => resp.json())
         .then((data) => {
           setProject(data);
+          setServices(data.services || []);
         })
         .catch((err) => {
           console.error("Erro ao buscar projeto:", err);
@@ -73,6 +76,11 @@ function Project() {
 
   function createService() {
     setMessage(""); // Limpa mensagens anteriores
+    if (!project.services || project.services.length === 0) {
+      setMessage("Adicione os dados do servico antes de salvar.");
+      setType("error");
+      return false;
+    }
     //last service
     const lastService = project.services[project.services.length - 1];
     lastService.id = uuidv4();
@@ -102,6 +110,7 @@ function Project() {
       .then((data) => {
         // exibir os serviços
         setProject(data);
+        setServices(data.services || []);
         setShowSf(false);
         setMessage("Serviço adicionado com sucesso!");
         setType("success");
@@ -110,6 +119,8 @@ function Project() {
         console.error("Erro ao adicionar serviço:", err);
       });
   }
+
+  function removeService() {}
 
   return (
     <>
@@ -172,13 +183,13 @@ function Project() {
                 </div>
               )}
             </div>
-            <div className="mt-8 rounded-2xl border border-slate-200 bg-slate-50 p-6 shadow">
+            <section className="mt-10 rounded-3xl border border-slate-200 bg-white p-6 md:p-8 shadow-lg">
               <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
                     Serviços
                   </p>
-                  <h2 className="text-2xl font-bold text-slate-900">
+                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
                     Adicione um serviço
                   </h2>
                   <p className="text-sm text-slate-500">
@@ -193,17 +204,47 @@ function Project() {
                 </button>
               </div>
               {showSf && (
-                <ServiceForm
-                  handleSubmit={createService}
-                  textBtn="Adicionar Serviço"
-                  projectData={project}
-                />
+                <div className="mt-6 rounded-2xl border border-slate-200 bg-slate-50 p-4 md:p-6">
+                  <ServiceForm
+                    handleSubmit={createService}
+                    textBtn="Adicionar"
+                    projectData={project}
+                  />
+                </div>
               )}
-            </div>
-            <h2>Serviços</h2>
-            <Container>
-              <p>Itens de Serviços</p>
-            </Container>
+              <div className="mt-10">
+                <div className="flex items-center justify-between gap-4">
+                  <h3 className="text-xl md:text-2xl font-bold text-slate-900">
+                    Serviços cadastrados
+                  </h3>
+                  <span className="text-sm font-semibold text-slate-500">
+                    {services.length} item(s)
+                  </span>
+                </div>
+                <div className="mt-6">
+                  {services.length > 0 ? (
+                    <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+                      {services.map((service) => (
+                        <ServiceCard
+                          id={service.id}
+                          name={service.name}
+                          cost={service.cost}
+                          description={service.description}
+                          key={service.id}
+                          handleRemove={removeService}
+                        />
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="rounded-2xl border border-dashed border-slate-300 bg-slate-50 p-6 text-center">
+                      <p className="text-sm text-slate-600">
+                        Nao ha servicos cadastrados.
+                      </p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </section>
           </Container>
         </div>
       ) : (
