@@ -78,8 +78,21 @@
         "id": "2",
         "name": "Agência"
       },
-      "cost": 0,
-      "services": []
+      "cost": 3222,
+      "services": [
+        {
+          "name": "teste 1",
+          "cost": "2001",
+          "description": "teste de serviço",
+          "id": "bb8c9da5-7f66-4bcf-8c32-365ea78167d8"
+        },
+        {
+          "name": "asasas",
+          "cost": "1221",
+          "description": "teste de serviço",
+          "id": "ba440eb6-cbdb-4321-acd9-95e6878c3cab"
+        }
+      ]
     }
   ],
   "categories": [
