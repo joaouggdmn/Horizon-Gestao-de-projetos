@@ -1,10 +1,10 @@
 import SubmitButton from "../form/Button";
 import Input from "../form/Input";
+import MoneyInput from "../form/MoneyInput";
 import { useState } from "react";
 
-function ServiceForm({ handleSubmit, textBtn, projectData}) {
-
-    const [service, setService] = useState({});
+function ServiceForm({ handleSubmit, textBtn, projectData }) {
+  const [service, setService] = useState({});
 
   function submit(e) {
     e.preventDefault();
@@ -28,12 +28,12 @@ function ServiceForm({ handleSubmit, textBtn, projectData}) {
         placeholder="Digite o nome do serviço"
         handleOnChange={handleChange}
       />
-      <Input
-        type="number"
+      <MoneyInput
         text="Custo do Serviço"
         name="cost"
-        placeholder="Digite o valor total do serviço"
+        placeholder="0.00"
         handleOnChange={handleChange}
+        value={service.cost ? service.cost : ""}
       />
       <Input
         type="text"

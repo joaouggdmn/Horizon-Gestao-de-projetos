@@ -1,4 +1,5 @@
 import { BsFillTrashFill } from "react-icons/bs";
+import formatCurrency from "../../utils/formatCurrency";
 
 function ServiceCard({ id, name, cost, description, handleRemove }) {
   return (
@@ -6,13 +7,13 @@ function ServiceCard({ id, name, cost, description, handleRemove }) {
       <div className="flex items-start justify-between gap-4">
         <h4 className="text-lg font-bold text-slate-900">{name}</h4>
         <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700">
-          R$ {cost}
+          {formatCurrency(cost)}
         </span>
       </div>
-      <p className="mt-3 text-sm text-slate-600">{description}</p>
+      <p className="mt-3 text-sm text-slate-600 break-words">{description}</p>
       <div className="mt-6 flex items-center justify-between">
         <span className="text-xs font-semibold uppercase tracking-wide text-slate-400">
-          Servico
+          Serviço
         </span>
         <button
           onClick={() => handleRemove(id)}

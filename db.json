@@ -56,8 +56,15 @@
         "id": "1",
         "name": "Infraestrutura"
       },
-      "cost": 0,
-      "services": []
+      "cost": 1000,
+      "services": [
+        {
+          "name": "asas",
+          "cost": "1000.00",
+          "description": "teste",
+          "id": "59c7d0f4-9a3a-4799-ba18-cdbb32327b12"
+        }
+      ]
     },
     {
       "id": "9515",
@@ -91,6 +98,41 @@
           "cost": "1221",
           "description": "teste de serviço",
           "id": "ba440eb6-cbdb-4321-acd9-95e6878c3cab"
+        }
+      ]
+    },
+    {
+      "id": "e298",
+      "budget": "29199",
+      "name": "teste orc",
+      "category": {
+        "id": "6",
+        "name": "Financeiro"
+      },
+      "cost": 0,
+      "services": []
+    },
+    {
+      "id": "436a",
+      "name": "teste 2 orc",
+      "budget": "1100089.89",
+      "category": {
+        "id": "6",
+        "name": "Financeiro"
+      },
+      "cost": 3334.3199999999997,
+      "services": [
+        {
+          "name": "teste desds",
+          "cost": "1000.99",
+          "description": "testeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee      eeeeeeeeeeee",
+          "id": "5a2adb4e-b9af-42e2-b896-9a174ac79a0b"
+        },
+        {
+          "name": "dssssssssssssssssss",
+          "cost": "2333.33",
+          "description": "232322323",
+          "id": "688a2ab9-306a-400e-ba7e-fd5428385a9f"
         }
       ]
     }

@@ -2,6 +2,7 @@ import Message from "../layout/Message";
 import LinkButton from "../layout/LinkButton";
 import ProjectCard from "../project/ProjectCard";
 import Loading from "../layout/Loading";
+import formatCurrency from "../../utils/formatCurrency";
 
 import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -68,7 +69,7 @@ function Projects() {
             <ProjectCard
               id={project.id}
               name={project?.name}
-              budget={project?.budget}
+              budget={formatCurrency(project?.budget)}
               category={project?.category?.name}
               key={project?.id}
               handleRemove={removeProject}

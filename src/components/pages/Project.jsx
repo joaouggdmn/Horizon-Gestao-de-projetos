@@ -6,6 +6,7 @@ import ProjectForm from "../project/ProjectForm";
 import Message from "../layout/Message";
 import ServiceForm from "../service/ServiceForm";
 import ServiceCard from "../service/ServiceCard";
+import formatCurrency from "../../utils/formatCurrency";
 
 import { v4 as uuidv4 } from "uuid";
 
@@ -161,7 +162,7 @@ function Project() {
                       Orcamento total
                     </p>
                     <p className="text-lg font-semibold text-blue-600">
-                      R$ {project.budget}
+                      {formatCurrency(project.budget)}
                     </p>
                   </div>
                   <div className="bg-slate-50 rounded-xl p-5 border border-slate-200">
@@ -169,7 +170,7 @@ function Project() {
                       Total utilizado
                     </p>
                     <p className="text-lg font-semibold text-slate-900">
-                      R$ {project.cost}
+                      {formatCurrency(project.cost)}
                     </p>
                   </div>
                 </div>

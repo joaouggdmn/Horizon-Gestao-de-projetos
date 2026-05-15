@@ -1,4 +1,5 @@
 import Input from "../form/Input";
+import MoneyInput from "../form/MoneyInput";
 import Select from "../form/Select";
 import Button from "../form/Button";
 
@@ -53,17 +54,16 @@ function ProjectForm({ onSubmit, btnText, projectData }) {
           name="name"
           placeholder="Digite o nome do seu projeto"
           handleOnChange={handleChange}
-          value={project.name ? project.name : '' }
+          value={project.name ? project.name : ""}
         />
 
         {/* Budget */}
-        <Input
-          type="number"
+        <MoneyInput
           text="Orçamento Total"
           name="budget"
           placeholder="0.00"
           handleOnChange={handleChange}
-          value={project.budget ? project.budget : '' }
+          value={project.budget ? project.budget : ""}
         />
 
         {/* Category */}
@@ -72,7 +72,7 @@ function ProjectForm({ onSubmit, btnText, projectData }) {
           name="category_id"
           options={categories}
           handleOnChange={handleCategory}
-          value={project.category ? project.category.id : ''}
+          value={project.category ? project.category.id : ""}
         />
       </div>
 
